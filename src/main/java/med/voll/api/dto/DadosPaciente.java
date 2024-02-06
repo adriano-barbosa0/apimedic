@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import med.voll.api.dto.endereco.DadosEndereco;
 
-public record DadosMedico(
+public record DadosPaciente(
         @NotBlank
         String nome,
         @NotBlank
@@ -16,11 +16,10 @@ public record DadosMedico(
         @NotBlank
         String telefone,
         @NotBlank
-        @Pattern(regexp = "\\d{4,6}") //(espressão regular) \\d são digitos, 4,6 são o limite de digitos
-        String crm,
-        @NotNull
-        Especialidade especialidade,
+        @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\.?\\d{2}")
+        String cpf,
         @NotNull
         @Valid
-        DadosEndereco endereco) {
+        DadosEndereco endereco
+) {
 }
